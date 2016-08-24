@@ -28,8 +28,7 @@ class JWTAuthSpec extends MutableScalatraSpec {
     val header = JwtHeader("HS256")
     val claimsSet = JwtClaimsSet(Extraction.decompose(JWTClaims(((System.currentTimeMillis/1000)+1000).toString, 1, "tim")))
     val tok = JsonWebToken(header, claimsSet, "secretkeybatterydowntownhorsegirrafe")
-    println(s"token is $tok")
-    println(s"token is valid ${JsonWebToken.validate(tok, "secretkeybatterydowntownhorsegirrafe")}")
+
     "401 when no auth header" in {
       get("/") {status === 401}
     }

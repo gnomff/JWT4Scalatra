@@ -81,18 +81,14 @@ abstract class JWTAuthStrategy[T <: AnyRef](protected val app: ScalatraBase)
   def authenticate()(implicit request: HttpServletRequest, response: HttpServletResponse) ={
     //we checked for a JWT token earlier in isValid
     request.getJWTToken.flatMap{ t =>
-      println(s"checking if $t is valid")
-      println(s"secret is $getSecret")
       //check the signature
       if(JsonWebToken.validate(t, getSecret)){
-        println(s"sweet it was valid")
         //extract the claims
         val claims = t match {
             case JsonWebToken(header, claimsSet, signature) =>
               Some(claimsSet)
             case _ =>None
         }
-        println(claims)
         validate(claims.getOrElse(app.halt(BadRequest("Unable to parse JWT Header"))))
       } else None
     }
