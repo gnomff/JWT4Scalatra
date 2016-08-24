@@ -33,7 +33,7 @@ dependencies {
     compile "org.scalatra:scalatra_$scalaMajor:$scalatraVersion"
     compile "org.scalatra:scalatra-json_$scalaMajor:$scalatraVersion"
     compile "org.scalatra:scalatra-auth_$scalaMajor:$scalatraVersion"
-    compile "com.jason-goodwin:authentikat-jwt_$scalaMajor:0.4.1"
+    compile "com.jason-goodwin:authentikat-jwt_$scalaMajor:0.4.3"
     compile "org.json4s:json4s-jackson_$scalaMajor:3.3.0"
     testCompile "junit:junit:4.11"
     testCompile "org.specs2:specs2-junit_$scalaMajor:3.6.6"
